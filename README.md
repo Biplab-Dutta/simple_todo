@@ -2,4 +2,4 @@
 
 ## Demo
 
-<img src="https://raw.githubusercontent.com/Biplab-Dutta/simple_todo/master/assets/asset.gif"></img>
+<img src="https://raw.githubusercontent.com/Biplab-Dutta/simple_todo/master/asset/asset.gif"></img>
