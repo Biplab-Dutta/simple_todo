@@ -32,17 +32,17 @@ class _HomePageView extends StatelessWidget {
         builder: (context, state) {
           switch (state.status) {
             case TodoStatus.loading:
-              return const CircularProgressIndicator.adaptive();
+              return const Center(child: CircularProgressIndicator.adaptive());
             case TodoStatus.failed:
               return const Center(child: Text('Something went wrong!!!'));
             case TodoStatus.loaded:
+              if (state.todos.isEmpty) {
+                return const Center(
+                  child: Text('No any todos. Add some todos...'),
+                );
+              }
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  if (state.todos.isEmpty) {
-                    return const Center(
-                      child: Text('No any todos. Add some todos...'),
-                    );
-                  }
                   return TodosListTile(
                     todo: state.todos[index],
                     onToggleCompleted: (isCompleted) {
@@ -53,6 +53,7 @@ class _HomePageView extends StatelessWidget {
                             ),
                           );
                     },
+                    shouldApplyStrikeThrough: state.todos[index].isCompleted,
                   );
                 },
                 itemCount: state.todos.length,

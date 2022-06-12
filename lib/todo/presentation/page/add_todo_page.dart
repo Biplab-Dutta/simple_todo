@@ -24,38 +24,43 @@ class _AddTodoPageState extends State<AddTodoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextFormField(
-            controller: _controller1,
-            decoration: const InputDecoration(
-              labelText: 'Title',
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              controller: _controller1,
+              decoration: const InputDecoration(
+                labelText: 'Title',
+              ),
+              textCapitalization: TextCapitalization.sentences,
             ),
-          ),
-          const SizedBox(height: 20),
-          TextFormField(
-            controller: _controller2,
-            decoration: const InputDecoration(
-              labelText: 'Description',
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: _controller2,
+              decoration: const InputDecoration(
+                labelText: 'Description',
+              ),
+              textCapitalization: TextCapitalization.sentences,
             ),
-          ),
-          const SizedBox(height: 40),
-          ElevatedButton(
-            child: const Text('Add Todo'),
-            onPressed: () {
-              context.read<TodosBloc>().add(
-                    TodoAdded(
-                      todo: Todo(
-                        title: _controller1.text,
-                        description: _controller2.text,
+            const SizedBox(height: 40),
+            ElevatedButton(
+              child: const Text('Add Todo'),
+              onPressed: () {
+                context.read<TodosBloc>().add(
+                      TodoAdded(
+                        todo: Todo(
+                          title: _controller1.text,
+                          description: _controller2.text,
+                        ),
                       ),
-                    ),
-                  );
-              Navigator.pop(context);
-            },
-          ),
-        ],
+                    );
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
