@@ -50,13 +50,5 @@ class TodoRepository {
     return _setValue(_kTodosStorageKey, jsonEncode(todos));
   }
 
-  Future<void> deleteTodo(Todo todo) {
-    final todos = [..._controller.value];
-    final todoIndex = todos.indexWhere((e) => e.id == todo.id);
-    todos.removeAt(todoIndex);
-    _controller.add(todos);
-    return _setValue(_kTodosStorageKey, jsonEncode(todos));
-  }
-
   void dispose() => _controller.close();
 }
