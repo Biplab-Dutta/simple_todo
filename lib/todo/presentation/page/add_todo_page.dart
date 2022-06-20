@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todos_flutter_bloc_demo/todo/domain/todo.dart';
-import 'package:todos_flutter_bloc_demo/todo/presentation/bloc/todos_bloc.dart';
+import 'package:todos_flutter_bloc_demo/todo/presentation/widgets/custom_textfield.dart';
+import 'package:todos_flutter_bloc_demo/todo/presentation/widgets/save_todo_button.dart';
 
 class AddTodoPage extends StatefulWidget {
   const AddTodoPage({Key? key}) : super(key: key);
@@ -36,35 +35,19 @@ class _AddTodoPageState extends State<AddTodoPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
+            CustomTextField(
               controller: _titleController,
-              decoration: const InputDecoration(
-                labelText: 'Title',
-              ),
-              textCapitalization: TextCapitalization.sentences,
+              labelText: 'Title',
             ),
             const SizedBox(height: 20),
-            TextFormField(
+            CustomTextField(
               controller: _descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Description',
-              ),
-              textCapitalization: TextCapitalization.sentences,
+              labelText: 'Description',
             ),
             const SizedBox(height: 40),
-            ElevatedButton(
-              child: const Text('Add Todo'),
-              onPressed: () {
-                context.read<TodosBloc>().add(
-                      TodoAdded(
-                        todo: Todo(
-                          title: _titleController.text,
-                          description: _descriptionController.text,
-                        ),
-                      ),
-                    );
-                Navigator.pop(context);
-              },
+            SaveTodoButton(
+              titleController: _titleController,
+              descriptionController: _descriptionController,
             ),
           ],
         ),
