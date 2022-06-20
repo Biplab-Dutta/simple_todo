@@ -11,13 +11,20 @@ class AddTodoPage extends StatefulWidget {
 }
 
 class _AddTodoPageState extends State<AddTodoPage> {
-  final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
+  late final TextEditingController _titleController;
+  late final TextEditingController _descriptionController;
+
+  @override
+  void initState() {
+    super.initState();
+    _titleController = TextEditingController();
+    _descriptionController = TextEditingController();
+  }
 
   @override
   void dispose() {
-    _controller1.dispose();
-    _controller2.dispose();
+    _titleController.dispose();
+    _descriptionController.dispose();
     super.dispose();
   }
 
@@ -30,7 +37,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: _controller1,
+              controller: _titleController,
               decoration: const InputDecoration(
                 labelText: 'Title',
               ),
@@ -38,7 +45,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
             ),
             const SizedBox(height: 20),
             TextFormField(
-              controller: _controller2,
+              controller: _descriptionController,
               decoration: const InputDecoration(
                 labelText: 'Description',
               ),
@@ -51,8 +58,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
                 context.read<TodosBloc>().add(
                       TodoAdded(
                         todo: Todo(
-                          title: _controller1.text,
-                          description: _controller2.text,
+                          title: _titleController.text,
+                          description: _descriptionController.text,
                         ),
                       ),
                     );
