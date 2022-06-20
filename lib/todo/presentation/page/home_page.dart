@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todos_flutter_bloc_demo/todo/data/todo_repository.dart';
+import 'package:todos_flutter_bloc_demo/todo/presentation/bloc/todos_bloc.dart';
 import 'package:todos_flutter_bloc_demo/todo/presentation/page/add_todo_page.dart';
-import 'package:todos_flutter_bloc_demo/todo/presentation/todos_bloc/todos_bloc.dart';
 import 'package:todos_flutter_bloc_demo/todo/presentation/widgets/todos_list_tile.dart';
 
 class HomePage extends StatelessWidget {

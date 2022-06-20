@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todos_flutter_bloc_demo/todo/domain/todo.dart';
-import 'package:todos_flutter_bloc_demo/todo/presentation/todos_bloc/todos_bloc.dart';
+import 'package:todos_flutter_bloc_demo/todo/presentation/bloc/todos_bloc.dart';
 
 class AddTodoPage extends StatefulWidget {
   const AddTodoPage({Key? key}) : super(key: key);
