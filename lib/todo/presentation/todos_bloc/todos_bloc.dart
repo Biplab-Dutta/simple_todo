@@ -39,11 +39,7 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
     Emitter<TodosState> emit,
   ) async {
     emit(state.copyWith(status: TodoStatus.loading));
-    final newTodo = event.todo.copyWith(
-      title: event.todo.title,
-      description: event.todo.description,
-    );
-    await _todoRepository.saveTodo(newTodo);
+    await _todoRepository.saveTodo(event.todo);
     emit(state.copyWith(status: TodoStatus.loaded));
   }
 

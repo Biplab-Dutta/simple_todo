@@ -43,17 +43,17 @@ class _HomePageView extends StatelessWidget {
               }
               return ListView.builder(
                 itemBuilder: (context, index) {
+                  final todo = state.todos[index];
                   return TodosListTile(
-                    todo: state.todos[index],
-                    onToggleCompleted: (isCompleted) {
-                      context.read<TodosBloc>().add(
-                            TodoCompletionToggled(
-                              todo: state.todos[index],
-                              isCompleted: isCompleted,
+                    todo: todo,
+                    onToggleCompleted: (isCompleted) =>
+                        context.read<TodosBloc>().add(
+                              TodoCompletionToggled(
+                                todo: todo,
+                                isCompleted: isCompleted,
+                              ),
                             ),
-                          );
-                    },
-                    shouldApplyStrikeThrough: state.todos[index].isCompleted,
+                    shouldApplyStrikeThrough: todo.isCompleted,
                   );
                 },
                 itemCount: state.todos.length,
